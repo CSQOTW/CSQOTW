@@ -1,6 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+let res = await fetch("http://localhost:3000/api/hello")
+
+let data = await res.json()
+console.log(data)
+
 ---
 
 <Layout title="Welcome to Astro.">
