@@ -1,21 +1,15 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"net/http"
+	
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+	e := echo.New()
+	e.GET("/api/hello", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, "Hello, World!")
 	})
-	
-	app.Get("/api/hello", func(c *fiber.Ctx) error {
-		return c.JSON(fiber.Map{
-			"message": "Hello, World!",
-		})
-	})
-
-	app.Listen(":3000")
+	e.Logger.Fatal(e.Start(":3000"))
 }
