@@ -1,4 +1,6 @@
 ---
+import { House, AlignLeft } from 'lucide-svelte';
+
 interface Props {
 	title: string;
 }
@@ -10,17 +12,25 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="grid grid-rows-[auto_minmax(0, 1fr)]">
+		<nav class="flex items-center justify-center text-black p-4 gap-12">
+			<a class="flex items-center justify-center gap-2" class:>
+				<House />
+				<span class="text-lg">Home</span>
+			</a>
+			<a class="flex items-center justify-center gap-2">
+				<AlignLeft />
+				<span class="text-lg">Problems</span>
+			</a>
+		</nav>
 		<slot />
 	</body>
 </html>
-<style is:global>
+<!-- <style is:global>
 	:root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
@@ -47,4 +57,4 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
-</style>
+</style> -->
